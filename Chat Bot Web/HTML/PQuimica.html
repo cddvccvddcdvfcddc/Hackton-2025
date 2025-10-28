@@ -41,6 +41,20 @@
 </head>
 
 <body>
+
+
+<script type="module">
+    // 1. Carga el script de Flowise
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    
+    // 2. Inicializa el chatbot en modo pop-up
+    Chatbot.init({ 
+        chatflowid: "a04c5c43-d505-4999-9937-f3cea39607b9", // Asegúrese de que este sea SU ID de Chatflow
+        apiHost: "http://localhost:3000",                   // Asegúrese de que este sea SU URL de Flowise
+    })
+</script>
+
+
     <header>
         <h1 class="titulo-tema" id="titulo-tema">Química</h1>
         <span class="nivel-educativo" id="nivel-educativo">Primaria</span>
