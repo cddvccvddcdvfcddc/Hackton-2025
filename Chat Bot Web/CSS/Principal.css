@@ -158,3 +158,113 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.2);
     background: rgba(0,0,0,0.4);
 }
+
+
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+}
+
+/* Contenedor del asistente - usar transform para animar (mejor rendimiento) */
+#asistente {
+    position: fixed; /* se mueve por la ventana */
+    top: 0; /* el desplazamiento real lo controlamos por transform en JS */
+    left: 0;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transform-origin: center;
+    will-change: transform, opacity;
+    animation: flotar-transform 6s ease-in-out infinite;
+}
+
+/* Decoración indirecta: pseudo-elemento que no afecta el texto */
+#asistente::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 140px;
+    height: 70px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at 30% 30%, rgba(255,200,0,0.18), transparent 40%);
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(6px);
+    animation: asistente-deco 7s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+/* Imagen sin fondo */
+.imagen-bot {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* Mensaje emergente */
+#mensaje {
+    display: none;
+    position: absolute;
+    top: -50px;
+    left: 90px;
+    background: white;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Movimiento tipo "revoloteo" optimizado con transform */
+@keyframes flotar-transform {
+    0%   { transform: translate(0,0) rotate(-6deg); }
+    12%  { transform: translate(-18px,-6px) rotate(6deg); }
+    25%  { transform: translate(16px,-10px) rotate(-3deg); }
+    38%  { transform: translate(-8px,8px) rotate(6deg); }
+    50%  { transform: translate(0px,12px) rotate(-4deg); }
+    62%  { transform: translate(10px,-8px) rotate(8deg); }
+    75%  { transform: translate(-14px,-4px) rotate(-2deg); }
+    88%  { transform: translate(6px,6px) rotate(2deg); }
+    100% { transform: translate(0,0) rotate(-6deg); }
+}
+
+@keyframes asistente-deco {
+    0%   { transform: translate(-50%, -50%) translateY(0) rotate(0); opacity: 0.95; }
+    50%  { transform: translate(-50%, -50%) translateY(-10px) rotate(2deg); opacity: 1; }
+    100% { transform: translate(-50%, -50%) translateY(0) rotate(-2deg); opacity: 0.95; }
+}
+
+/* Efecto de brillito (sparkles) */
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgb(248, 228, 4);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 3px rgba(255,255,255,0.8);
+    pointer-events: none;
+    opacity: 1;
+    animation: desaparecer 1s linear forwards;
+}
+
+@keyframes desaparecer {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.2); }
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    #asistente,
+    #asistente::before,
+    .sparkle,
+    .overlay {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
