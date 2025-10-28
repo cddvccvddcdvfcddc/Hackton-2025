@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secundaria - Temas</title>
+    <link rel="stylesheet" href="../CSS/PQuimica.css">
+    <style>
+        .boton-interactivo { position: fixed; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: 0.3s ease; z-index:1000; }
+        .boton-interactivo:hover { background-color: #0056b3; }
+        #chatBotBtn { bottom: 20px; right: 20px; }
+        #descargarPDF { bottom: 20px; left: 20px; }
+        .seccion { margin: 20px 0; padding: 16px; background: rgba(255,255,255,0.9); border-radius: 8px; }
+    </style>
+</head>
+
+<body>
+    <!-- Navegación superior -->
+    <nav class="site-nav" aria-label="Navegación principal">
+        <ul>
+            <li><a href="Principal.html">Principal</a></li>
+            <li><a href="Primaria.html">Primaria</a></li>
+            <li><a href="Secundaria.html" class="active">Secundaria</a></li>
+            <li><a href="Preparatoria.html">Preparatoria</a></li>
+            <li><a href="Universidad.html">Universidad</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1 class="titulo-tema">Secundaria</h1>
+        <span class="nivel-educativo">Secundaria</span>
+    </header>
+
+    <main>
+        <div class="contenido-tema">
+
+            <div class="seccion" id="quimica">
+                <h2>Química</h2>
+                <p>Conceptos de átomos y moléculas, reacciones sencillas, separación de mezclas y seguridad en el laboratorio escolar.</p>
+            </div>
+
+            <div class="seccion" id="historia">
+                <h2>Historia</h2>
+                <p>Estudios de periodos históricos importantes, fuentes primarias y pensamiento crítico aplicado a eventos y procesos sociales.</p>
+            </div>
+
+            <div class="seccion" id="tecnologia">
+                <h2>Tecnología</h2>
+                <p>Herramientas digitales, introducción a la programación y proyectos maker que fomenten la resolución de problemas.</p>
+            </div>
+
+            <div class="seccion" id="matematicas">
+                <h2>Matemáticas</h2>
+                <p>Álgebra básica, geometría, razonamiento lógico y aplicaciones en problemas reales y modelado simple.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 IAColmena</p>
+    </footer>
+
+    <button id="chatBotBtn" class="boton-interactivo">Chat Bot</button>
+    <button id="descargarPDF" class="boton-interactivo boton-descargar">Descargar PDF</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../Java/PQumica.js"></script>
+</body>
+
+</html>

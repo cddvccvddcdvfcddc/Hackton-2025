@@ -100,6 +100,34 @@ header .slogan {
     box-shadow: 0 0 30px cyan, 0 0 60px cyan;
 }
 
+/* Enlaces que actúan como botones (diseño solicitado) */
+.level-link {
+    display: inline-block;
+    background: #ffffff;
+    color: #05282f; /* texto oscuro para buen contraste */
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.15em;
+    font-family: inherit; /* usar la tipografía global (Orbitron) */
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(5,40,47,0.35), 0 2px 6px rgba(0,0,0,0.2);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    text-align: center;
+    width: 100%;
+    max-width: 320px;
+}
+
+.level-link:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(5,40,47,0.35);
+}
+
+.level-link:active {
+    transform: translateY(-2px) scale(0.995);
+    box-shadow: 0 10px 24px rgba(5,40,47,0.25);
+}
+
 /* Contenido desplegable */
 .dropdown-content {
     display: none;
