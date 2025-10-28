@@ -20,14 +20,13 @@
 
 
 <script type="module">
-    // 1. Carga el script de Flowise
+        // 1. Carga el script de Flowise
     import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-
     
     // 2. Inicializa el chatbot en modo pop-up
     Chatbot.init({ 
         chatflowid: "3e8eb4e4-55e0-4a94-a000-fef79dc28410", // Asegúrese de que este sea SU ID de Chatflow
-        apiHost: "http://host.docker.internal:11434",                   // Asegúrese de que este sea SU URL de Flowise
+        apiHost: "http://localhost:3000",                   // Asegúrese de que este sea SU URL de Flowise
     })
 </script>
 
