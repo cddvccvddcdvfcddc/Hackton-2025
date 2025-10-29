@@ -80,6 +80,15 @@ header .slogan {
     gap: 30px;
     padding: 50px;
     justify-items: center;
+    justify-content: center; /* centrar el grid dentro del contenedor */
+}
+
+/* Asegurar que cada celda (.level) centre su contenido (el botón) */
+.level{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .dropdown-btn {
@@ -116,7 +125,7 @@ header .slogan {
     box-shadow: 0 8px 20px rgba(5,40,47,0.35), 0 2px 6px rgba(0,0,0,0.2);
     transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     text-align: center;
-    width: 100%;
+    width: auto; /* no forzar ancho completo, permitir centrar */
     max-width: 320px;
 }
 
@@ -165,8 +174,9 @@ footer {
 
 body {
     margin: 0;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    height: auto; /* permitir que el contenido crezca y el footer sea visible */
+    overflow-y: auto; /* permitir desplazamiento vertical */
     font-family: "Poppins", sans-serif;
     position: relative;
 }
@@ -331,6 +341,15 @@ body::after{
     font-weight: 700;
     font-size: 1.25rem;
     color: inherit; /* seguir color del body (contraste) */
+}
+
+/* Si .choose-level está dentro de .levels (grid), forzar que ocupe toda la fila y quede centrado sobre los botones */
+.levels .choose-level{
+    grid-column: 1 / -1; /* ocupar todas las columnas del grid */
+    text-align: center;
+    font-size: 1.35rem;
+    margin-bottom: 18px;
+    opacity: 0.98;
 }
 .info-card:hover,
 .contenido-tema:hover{ transform: translateY(-6px); box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
