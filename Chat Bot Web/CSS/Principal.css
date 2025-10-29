@@ -50,8 +50,10 @@ header .slogan {
 /* Sección de información */
 .about {
     display: flex;
+    flex-direction: column; /* apilar el recuadro y el texto debajo */
     justify-content: center;
     align-items: center;
+    gap: 12px;
     padding: 50px;
 }
 
@@ -321,6 +323,14 @@ body::after{
     border-radius: var(--card-radius);
     box-shadow: 0 8px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.02);
     transition: transform 0.32s cubic-bezier(.22,.9,.35,1), box-shadow 0.32s ease, background 0.32s ease;
+}
+.choose-level{
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: inherit; /* seguir color del body (contraste) */
 }
 .info-card:hover,
 .contenido-tema:hover{ transform: translateY(-6px); box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
