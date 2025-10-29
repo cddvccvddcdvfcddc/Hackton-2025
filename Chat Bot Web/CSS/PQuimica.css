@@ -1,9 +1,6 @@
-/* Archivo: ../CSS/PQuimica.css (Diseño Web + Reglas de Impresión) */
-
-/* DISEÑO WEB FUTURISTA */
 body {
     background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
-    color: #fff;
+    color: #000000;
     font-family: 'Orbitron', sans-serif;
     margin: 0;
     padding: 0;
@@ -25,7 +22,7 @@ header {
     z-index: 1200;
     background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(6px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .site-nav ul {
     list-style: none;
@@ -214,4 +211,83 @@ footer {
     .site-nav {
         display: none !important;
     }
-}
+}.boton-interactivo {
+            position: fixed;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease;
+            z-index: 1000;
+        }
+
+        .boton-interactivo:hover {
+            background-color: #0056b3;
+        }
+
+        #chatBotBtn {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        #descargarPDF {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .seccion {
+            margin: 20px 0;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+
+        /* --- Additive visual improvements (non-intrusive) --- */
+        :root{
+            --accent1: #00f0ff;
+            --accent2: #8affc1;
+        }
+
+        /* subtle section entrance */
+        .seccion{ opacity: 0; transform: translateY(8px); animation: pq-section-in 520ms ease forwards; }
+        @keyframes pq-section-in{ to { opacity: 1; transform: translateY(0); } }
+
+        /* gentle hover for botón interactivo inside these pages */
+        .boton-interactivo{ transition: transform 220ms ease, box-shadow 220ms ease; }
+        .boton-interactivo:hover{ transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+
+        @media (prefers-reduced-motion: reduce){
+            .seccion, .boton-interactivo { animation: none !important; transition: none !important; }
+        }
+
+        /* Badge: Tutor generativo (fixed, sits above chat button) */
+        .tutor-badge{
+            position: fixed;
+            right: 24px; /* aligns with chat button */
+            bottom: 86px; /* above typical chat button at 20px + button height */
+            z-index: 1600;
+            background: linear-gradient(90deg, rgba(0,240,255,0.12), rgba(138,255,193,0.08));
+            color: #e6ffff;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35), 0 2px 6px rgba(0,240,255,0.06);
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.92em;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            transition: transform 220ms cubic-bezier(.22,.9,.35,1), box-shadow 220ms ease, opacity 200ms ease;
+        }
+        .tutor-badge:hover{ transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 40px rgba(0,0,0,0.45); }
+        .tutor-badge:active{ transform: translateY(-2px) scale(0.99); }
+
+        @media (max-width:640px){
+            .tutor-badge{ right: 14px; bottom: 86px; padding: 7px 10px; font-size: 0.86em; }
+        }
+
+        @media (prefers-reduced-motion: reduce){ .tutor-badge{ transition: none !important; } }
