@@ -6,6 +6,20 @@ document.querySelectorAll(".dropdown-btn").forEach(button => {
     });
 });
 
+// Ensure tutor badge stays fixed relative to the viewport: move it to body (for Principal page)
+function ensureBadgeFixedPrincipal() {
+  document.querySelectorAll('.tutor-badge').forEach(b => {
+    if (b.parentElement !== document.body) document.body.appendChild(b);
+    b.style.position = 'fixed';
+    b.style.right = b.style.right || '24px';
+    b.style.bottom = b.style.bottom || '86px';
+    b.style.zIndex = '1600';
+    b.style.pointerEvents = 'auto';
+  });
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ensureBadgeFixedPrincipal);
+else ensureBadgeFixedPrincipal();
+
 // Animación de luces de fondo suave
 document.addEventListener("mousemove", (e) => {
     const overlay = document.querySelector(".overlay");
