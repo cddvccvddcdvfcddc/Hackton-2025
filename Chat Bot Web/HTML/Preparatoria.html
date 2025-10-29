@@ -4,32 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preparatoria - Temas</title>
+    <title>Primaria - Temas</title>
     <link rel="stylesheet" href="../CSS/PQuimica.css">
+    
     <style>
-        .boton-interactivo { position: fixed; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: 0.3s ease; z-index:1000; }
-        .boton-interactivo:hover { background-color: #0056b3; }
-        #chatBotBtn { bottom: 20px; right: 20px; }
-        #descargarPDF { bottom: 20px; left: 20px; }
-        .seccion { margin: 20px 0; padding: 16px; background: rgba(255,255,255,0.9); border-radius: 8px; }
+        /* Local header styles for Primaria (additive, page-scoped) */
+        .page-hero{
+            padding: 32px 20px;
+            background: linear-gradient(180deg, rgba(0,240,255,0.06), rgba(0,0,0,0));
+            border-radius: 12px;
+            margin: 18px auto 24px;
+            max-width: 1100px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.02);
+        }
+        .hero-inner{ display:flex; gap:18px; align-items:center; justify-content:space-between; }
+        .hero-left{ flex:1 1 56%; }
+        .nivel-pill{ display:inline-block; background: rgba(138,255,193,0.08); color: var(--accent1, #00f0ff); padding:6px 10px; border-radius:999px; font-weight:800; font-size:0.86rem; border:1px solid rgba(0,255,255,0.08); }
+        .hero-lead{ margin-top:10px; color: rgba(0,0,0,0.75); background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.9)); display:inline-block; padding:8px 12px; border-radius:10px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+    .hero-ctas{ margin-top:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    /* Ensure hero CTAs move with the hero (override any fixed button rules) */
+    .page-hero .boton-interactivo{ position: relative !important; right: auto !important; bottom: auto !important; }
+    .hero-ctas .boton-interactivo{ padding:10px 14px; font-size:0.95rem; }
+        .hero-illustration{ width:220px; height:140px; display:flex; align-items:center; justify-content:center; }
+        .hero-illustration svg{ width:100%; height:100%; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.25)); }
+        @media (max-width:880px){ .hero-inner{ flex-direction:column; align-items:flex-start; } .hero-illustration{ width:100%; height:160px; } }
+        @media (prefers-reduced-motion: reduce){ .hero-illustration svg{ animation:none !important; } }
     </style>
 </head>
 
 <body>
 
 
+    <script type="module">
+        // 1. Carga el script de Flowise
+        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
 
-<script type="module">
-    // 1. Carga el script de Flowise
-    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+        // 2. Inicializa el chatbot en modo pop-up
+        Chatbot.init({
+            chatflowid: "a04c5c43-d505-4999-9937-f3cea39607b9", // Asegúrese de que este sea SU ID de Chatflow
+            apiHost: "http://localhost:3000",                   // Asegúrese de que este sea SU URL de Flowise
+        })
+    </script>
 
-    
-    // 2. Inicializa el chatbot en modo pop-up
-    Chatbot.init({ 
-        chatflowid: "3e8eb4e4-55e0-4a94-a000-fef79dc28410", // Asegúrese de que este sea SU ID de Chatflow
-        apiHost: "http://host.docker.internal:11434",                   // Asegúrese de que este sea SU URL de Flowise
-    })
-</script>
+
 
 
     <!-- Navegación superior -->
@@ -38,37 +55,320 @@
             <li><a href="Principal.html">Principal</a></li>
             <li><a href="Primaria.html">Primaria</a></li>
             <li><a href="Secundaria.html">Secundaria</a></li>
-            <li><a href="Preparatoria.html" class="active">Preparatoria</a></li>
+            <li><a href="Preparatoria.html"class="active">Preparatoria</a></li>
             <li><a href="Universidad.html">Universidad</a></li>
         </ul>
     </nav>
-    <header>
-        <h1 class="titulo-tema">Preparatoria</h1>
-        <span class="nivel-educativo">Preparatoria</span>
+    <header class="page-hero" aria-labelledby="primaria-title">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <span class="nivel-pill">Nivel • Preparatoria</span>
+                <h1 id="primaria-title" class="titulo-tema">Preparatoria</h1>
+                <p class="hero-lead">Materiales y actividades diseñadas para despertar curiosidad: experimentos sencillos, juegos matemáticos y explicaciones claras que hacen del aprendizaje una aventura.</p>
+                <div class="hero-ctas">
+                    <a href="#quimica" class="boton-interactivo hero-cta-btn" role="button" aria-label="Comenzar por Química">Química</a>
+                    <a href="#historia" class="boton-interactivo hero-cta-btn" role="button" aria-label="Comenzar por Historia">Historia</a>
+                    <a href="#tecnologia" class="boton-interactivo hero-cta-btn" role="button" aria-label="Comenzar por Tecnología">Tecnología</a>
+                    <a href="#matematicas" class="boton-interactivo hero-cta-btn" role="button" aria-label="Comenzar por Matemáticas">Matemáticas</a>
+                </div>
+            </div>
+            <div class="hero-illustration" aria-hidden="true">
+                <!-- Decorative SVG: friendly book + sparkles -->
+                <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="g1" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.35" />
+                            <stop offset="100%" stop-color="#8affc1" stop-opacity="0.25" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="10" y="34" width="180" height="100" rx="12" ry="12" fill="url(#g1)" />
+                    <rect x="20" y="44" width="160" height="80" rx="8" ry="8" fill="#fff" opacity="0.9" />
+                    <path d="M28 62h144" stroke="#00c8d8" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M28 82h144" stroke="#bfffdc" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="210" cy="28" r="6" fill="#fff8a3" opacity="0.9" />
+                    <circle cx="200" cy="18" r="4" fill="#00f0ff" opacity="0.9" />
+                    <g transform="translate(18,10)" opacity="0.9">
+                        <rect x="0" y="0" width="30" height="18" rx="4" fill="#ffd" />
+                    </g>
+                </svg>
+            </div>
+        </div>
     </header>
 
     <main>
         <div class="contenido-tema">
 
             <div class="seccion" id="quimica">
+
                 <h2>Química</h2>
-                <p>Estudio de la estructura atómica, tabla periódica, ecuaciones químicas y prácticas experimentales con enfoque en método científico.</p>
+
+                <h3>La materia y sus estados</h3>
+                <p>
+                    La materia puede estar presente principalmente en tres estados: <strong>sólido, líquido y
+                        gaseoso</strong>.
+                    Cada estado tiene características que determinan cómo podemos percibir, utilizar y transformar la
+                    materia.
+                </p>
+
+                <h4>Estado sólido</h4>
+                <p>
+                    En el estado sólido, los átomos y moléculas están unidos entre sí, lo que hace que el volumen y la
+                    forma
+                    sean rígidos y definidos. Las partículas tienen poca movilidad y energía cinética baja, aunque
+                    vibran ligeramente.
+                    Al aumentar la presión, los sólidos apenas se comprimen.
+                </p>
+
+                <h4>Estado líquido</h4>
+                <p>
+                    Los átomos y moléculas están débilmente unidos, lo que permite que los líquidos fluyan y cambien de
+                    forma.
+                    Tienen energía cinética mayor que los sólidos y mantienen un <strong>volumen definido</strong>, pero
+                    no una forma fija.
+                    Los líquidos no pueden ser comprimidos fácilmente.
+                </p>
+
+                <h4>Estado gaseoso</h4>
+                <p>
+                    Las partículas se mueven libremente y están muy separadas entre sí, sin forma ni volumen definidos.
+                    Tienen alta energía cinética y se expanden para llenar cualquier contenedor. Bajo presión, las
+                    partículas se acercan,
+                    reduciendo el volumen del gas.
+                </p>
+
+                <hr>
+
+                <h3>El agua y sus propiedades</h3>
+                <p>
+                    El ciclo del agua es impulsado por la energía solar. El sol calienta océanos y otras superficies,
+                    provocando la evaporación
+                    del agua líquida y la sublimación del hielo. El vapor se eleva, se condensa en nubes y cae como
+                    precipitación (lluvia o nieve).
+                </p>
+
+                <p>
+                    Una vez en la tierra, el agua puede:
+                </p>
+                <ul>
+                    <li>Evaporarse nuevamente.</li>
+                    <li>Fluir sobre la superficie como escurrimiento.</li>
+                    <li>Percolarse y filtrarse en el suelo.</li>
+                </ul>
+
+                <p>
+                    En ecosistemas terrestres, parte del agua se evapora de las plantas, y otra parte es absorbida por
+                    el suelo.
+                    El escurrimiento ocurre solo si el suelo está saturado, la lluvia es intensa o la superficie no
+                    absorbe agua (como rocas, asfalto o cemento).
+                </p>
             </div>
 
+            <div class="page" id="Convpdf">
             <div class="seccion" id="historia">
                 <h2>Historia</h2>
-                <p>Análisis de movimientos sociales, procesos políticos y económicos, además de técnicas de investigación histórica y crítica de fuentes.</p>
+
+                <h3>La Independencia de México</h3>
+                <p>
+                    La Independencia de México fue un proceso que comenzó el <strong>16 de septiembre de 1810</strong>
+                    con
+                    el <strong>Grito de Dolores</strong> del padre <strong>Miguel Hidalgo</strong> y culminó el
+                    <strong>27 de septiembre de 1821</strong>
+                    con la entrada triunfal del <strong>Ejército Trigarante</strong> a la Ciudad de México.
+                    Este conflicto duró 11 años y estuvo marcado por la participación de figuras clave como
+                    <strong>Agustín de Iturbide</strong> y <strong>Vicente Guerrero</strong>.
+                </p>
+
+                <h4>Causas principales</h4>
+                <ul>
+                    <li>Injusticias del gobierno español.</li>
+                    <li>Desigualdad social y económica.</li>
+                    <li>Discriminación hacia criollos, mestizos, indígenas y afrodescendientes.</li>
+                </ul>
+
+                <p>
+                    Los <strong>peninsulares</strong> (españoles nacidos en Europa) ocupaban los cargos más importantes
+                    del gobierno, la iglesia y el ejército, mientras que los <strong>criollos</strong> (hijos de
+                    españoles nacidos en América)
+                    eran excluidos. Esta desigualdad provocó descontento y motivó el inicio del movimiento
+                    independentista.
+                </p>
+
+                <p>
+                    De este contexto surgió la <strong>Conspiración de Querétaro</strong>, encabezada por
+                    <strong>Miguel Hidalgo, Ignacio Allende y Josefa Ortiz de Domínguez</strong>.
+                    Aunque al principio buscaban gobernar en nombre del rey, pronto el objetivo cambió hacia
+                    la independencia total de México.
+                </p>
+
+                <h4>Personajes principales</h4>
+                <ul>
+                    <li><strong>Miguel Hidalgo:</strong> Conocido como el “Padre de la Independencia”, inició el
+                        movimiento con el famoso <em>Grito de Dolores</em> en 1810.</li>
+                    <li><strong>José María Morelos:</strong> Líder militar y político que continuó la lucha tras la
+                        muerte de Hidalgo y convocó el Congreso de Anáhuac.</li>
+                    <li><strong>Ignacio Allende:</strong> General insurgente que luchó junto a Hidalgo y fue uno de los
+                        primeros líderes del movimiento.</li>
+                    <li><strong>Vicente Guerrero:</strong> Destacado líder guerrillero que jugó un papel crucial en la
+                        independencia y más tarde fue presidente de México.</li>
+                    <li><strong>Agustín de Iturbide:</strong> Inicialmente realista, se unió a los insurgentes y
+                        proclamó la independencia en 1821, convirtiéndose en el primer emperador de México.</li>
+                </ul>
+
+                <hr>
+
+                <h3>Las Civilizaciones Antiguas</h3>
+                <p>
+                    Las civilizaciones antiguas fueron sociedades complejas que florecieron en distintas regiones del
+                    mundo,
+                    dejando un legado cultural, científico y social que aún se estudia hoy en día.
+                </p>
+
+                <h4>Principales civilizaciones</h4>
+                <ul>
+                    <li><strong>Mesopotamia:</strong> Ubicación entre los ríos Tigris y Éufrates (actual Irak).</li>
+                    <li><strong>Egipto:</strong> Valle del río Nilo (noreste de África).</li>
+                    <li><strong>China Antigua:</strong> A orillas del río Amarillo (<em>Huang He</em>).</li>
+                    <li><strong>India Antigua:</strong> Valle del río Indo (actual Pakistán e India).</li>
+                    <li><strong>Grecia Antigua:</strong> Península balcánica y mar Egeo.</li>
+                    <li><strong>Roma Antigua:</strong> Península Itálica (actual Italia).</li>
+                    <li><strong>Civilizaciones Americanas:</strong> Culturas desarrolladas en el continente americano
+                        antes de la llegada de los europeos.</li>
+                </ul>
             </div>
+            </div>  
+            
 
             <div class="seccion" id="tecnologia">
                 <h2>Tecnología</h2>
-                <p>Proyectos de programación, electrónica básica, diseño y uso de herramientas digitales para crear soluciones tecnológicas.</p>
+
+                <h3>¿Qué es la tecnología?</h3>
+                <p>
+                    La tecnología no solo implica máquinas o dispositivos electrónicos, sino también métodos, sistemas
+                    y conocimientos aplicados para crear soluciones prácticas.
+                </p>
+
+                <p>Se puede clasificar en varias áreas:</p>
+                <ul>
+                    <li><strong>Tecnología de la información:</strong> computadoras, internet, software.</li>
+                    <li><strong>Biotecnología:</strong> avances en medicina y agricultura.</li>
+                    <li><strong>Ingeniería y manufactura:</strong> maquinaria, construcción, transporte.</li>
+                </ul>
+
+                <hr>
+
+                <h3>Conceptos relacionados</h3>
+                <p>Para entender mejor la definición de tecnología, se definen los siguientes conceptos:</p>
+
+                <p><strong>Ciencia:</strong><br>
+                    Es el conjunto de conocimientos que tiene el ser humano del mundo y de la naturaleza.<br>
+                    <em>Ejemplos:</em> Biología, Física, Medicina, Genética.
+                </p>
+
+                <p><strong>Técnica:</strong><br>
+                    Son las habilidades o destrezas, todo aquello que sabemos hacer.<br>
+                    <em>Ejemplos:</em> construir un puente, arar un campo, unir piezas de madera, soldar metales,
+                    fabricar objetos.
+                </p>
+
+                <blockquote>
+                    <p><strong>Definición según la RAE:</strong><br>
+                        “Conjunto de teorías y de técnicas que permiten el aprovechamiento práctico del conocimiento
+                        científico.”</p>
+                </blockquote>
+
+                <hr>
+
+                <h3>Importancia de la tecnología</h3>
+                <ol>
+                    <li><strong>Facilita la vida diaria:</strong> automatiza tareas, optimiza procesos y ahorra tiempo.
+                    </li>
+                    <li><strong>Impulsa la educación:</strong> acceso a información, aprendizaje en línea y herramientas
+                        educativas.</li>
+                    <li><strong>Desarrollo económico:</strong> mejora la producción, genera empleo y fomenta la
+                        innovación.</li>
+                    <li><strong>Avances científicos y médicos:</strong> permite diagnósticos precisos, tratamientos
+                        avanzados y nuevos descubrimientos.</li>
+                    <li><strong>Conectividad y comunicación:</strong> redes sociales, telecomunicaciones y colaboración
+                        global.</li>
+                </ol>
             </div>
+
 
             <div class="seccion" id="matematicas">
                 <h2>Matemáticas</h2>
-                <p>Cálculo elemental, trigonometría, estadística básica y modelado matemático aplicado a problemas reales y ciencias.</p>
+
+                <h3>Porcentajes</h3>
+                <p>
+                    <strong>¿Qué es un porcentaje?</strong><br>
+                    Un porcentaje es una forma de expresar una parte de un total, tomando como referencia el número 100.
+                    Se representa con el símbolo <strong>%</strong>.
+                </p>
+
+                <div class="ejemplo">
+                    <p><strong>Ejemplo:</strong></p>
+                    <p>
+                        Si en una clase hay 100 estudiantes y 30 son niños, podemos decir que el <strong>30%</strong>
+                        de los estudiantes son niños.
+                    </p>
+                </div>
+
+                <hr>
+
+                <h3>Cómo calcular un porcentaje</h3>
+
+                <h4>A) A partir de una cantidad</h4>
+                <p>
+                    <strong>Fórmula:</strong><br>
+                    <code>Porcentaje = (Parte / Total) × 100</code>
+                </p>
+
+                <p><strong>Ejemplo:</strong><br>
+                    En un frasco hay 50 caramelos y 20 son rojos. ¿Qué porcentaje de caramelos es rojo?<br>
+                    <code>Porcentaje = 20 / 50 × 100 = 0.4 × 100 = 40%</code><br>
+                    <strong>Respuesta:</strong> El 40% de los caramelos son rojos.
+                </p>
+
+                <hr>
+
+                <h4>B) Hallar la parte a partir del porcentaje</h4>
+                <p>
+                    <strong>Fórmula:</strong><br>
+                    <code>Parte = Total × (Porcentaje / 100)</code>
+                </p>
+
+                <p><strong>Ejemplo:</strong><br>
+                    Una camiseta cuesta $200 y tiene un descuento del 25%. ¿Cuánto es el descuento?<br>
+                    <code>Descuento = 200 × 25 / 100 = 200 × 0.25 = 50</code><br>
+                    <strong>Respuesta:</strong> El descuento es de $50. La camiseta costará $150.
+                </p>
+
+                <hr>
+
+                <h4>C) Hallar el total a partir del porcentaje</h4>
+                <p>
+                    <strong>Fórmula:</strong><br>
+                    <code>Total = Parte / (Porcentaje / 100)</code>
+                </p>
+
+                <p><strong>Ejemplo:</strong><br>
+                    Sabemos que 30 estudiantes son el 60% de la clase. ¿Cuántos estudiantes hay en total?<br>
+                    <code>Total = 30 / 60 × 100 = 0.5 × 100 = 50</code><br>
+                    <strong>Respuesta:</strong> Hay 50 estudiantes en total.
+                </p>
+
+                <hr>
+
+                <h3>Conversión de porcentajes a fracciones y decimales</h3>
+                <ul>
+                    <li><strong>Porcentaje → decimal:</strong> dividir entre 100 <br>
+                        Ejemplo: 25% → 0.25
+                    </li>
+                    <li><strong>Porcentaje → fracción:</strong> escribir sobre 100 y simplificar <br>
+                        Ejemplo: 25% → 25/100 → 1/4
+                    </li>
+                </ul>
             </div>
+
 
         </div>
     </main>
@@ -77,8 +377,7 @@
         <p>© 2025 IAColmena</p>
     </footer>
 
-  
-    <button id="descargarPDF" class="boton-interactivo boton-descargar">Descargar PDF</button>
+    <button id="descargarPDF" class="boton-interactivo boton-descargar" @oneclick="generarpdf">Descargar PDF</button>
     <button id="tutorBadge" class="tutor-badge" aria-label="Tutor generativo">Tutor generativo</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
